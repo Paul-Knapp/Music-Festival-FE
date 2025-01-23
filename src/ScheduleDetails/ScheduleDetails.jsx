@@ -1,16 +1,15 @@
-import './ScheduleDetails.css';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import './ScheduleDetails.css';
 
 function ScheduleDetails() {
     const [details, setDetails] = useState(null);
-    const [error, setError] = useState(null); // make sure setError is defined here
-    const { id } = useParams(); // Extracting the schedule ID from the URL
+    const [error, setError] = useState(null);
+    const { id } = useParams();
 
-    // Refetch details whenever `id` changes
     useEffect(() => {
         getDetails();
-    }, [id]); // Adding `id` as a dependency
+    }, [id]);
 
     function getDetails() {
         fetch(`http://localhost:3000/api/v1/schedules/${id}/schedule_shows`, {
@@ -22,41 +21,61 @@ function ScheduleDetails() {
             }
             return response.json();
         })
-        .then((data) => {
-            setDetails(data.data); // Assuming `data.data` contains the schedule details
+        .then((schedulesdetails) => {
+            const { data, included } = schedulesdetails;
+            setDetails(data);
+
+            const shows = data.relationships.shows.data;
+            const includedShows = included.filter((item) => item.type === "show");
+
+            const showsWithDetails = shows.map((showRef) =>
+                includedShows.find((includedShow) => includedShow.id === showRef.id)
+            );
+
+            setDetails((prevDetails) => ({
+                ...prevDetails,
+                shows: showsWithDetails,
+            }));
         })
         .catch((error) => setError(error.message)); 
     }
 
-    // Error handling
     if (error) {
         return <p className="error-message">{error}</p>;
     }
 
-    // Loading state
     if (!details) {
-        return <p className="loading-message">Loading schedule...</p>; 
+        return <p className="loading-message">Loading schedule...</p>;
     }
+    
+    {console.log("details", details)}
+    const user = details.included;
+    const shows = details.shows;
 
-    // Rendering the schedule details
     return (
         <div className="scheduledetails">
-            <h2>{details.attributes.name}</h2>
-            <p>Time: {details.attributes.time}</p>
-            {/* Display other details here, for example: */}
-            {details.relationships.user && (
-                <p>User: {details.relationships.user.data.id}</p>
+            <h2>{details.attributes.title}</h2>
+            <p>Date: {details.attributes.date}</p>
+            {console.log("user", user)}
+            {user && (
+                <div>
+                    <h3>User Information:</h3>
+                    <p>Name: {user.attributes.first_name} {user.attributes.last_name}</p>
+                    <p>Email: {user.attributes.email}</p>
+                </div>
             )}
+
             <h3>Shows:</h3>
-            {details.relationships.shows.data.length > 0 ? (
-                <ul>
-                    {details.relationships.shows.data.map((show) => (
-                        <li key={show.id}>{show.type}</li>
-                    ))}
-                </ul>
-            ) : (
-                <p>No shows available</p>
-            )}
+            <ul>
+                {shows.map((show) => (
+                    <li key={show.id}>
+                        <p>Artist: {show.attributes.artist}</p>
+                        <p>Location: {show.attributes.location}</p>
+                        <p>Date: {show.attributes.date}</p>
+                        <p>Time: {show.attributes.time} PM</p>
+                    </li>
+                ))}
+            </ul>
         </div>
     );
 }
