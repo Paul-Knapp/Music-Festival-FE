@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import "./HomePage.css";
-import { data } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function HomePage() {
   const [schedules, setSchedules] = useState(null);
@@ -44,6 +44,10 @@ function HomePage() {
           <ul key={schedule.id} className="schedule-item">
             <p>Date: {schedule.attributes.date}</p>
             <p>Title: {schedule.attributes.title} </p>
+
+            <Link to={`/schedule/${schedule.id}`} classname="details-link">
+              View Details
+            </Link>
           </ul>
         ))}
       </ul>
