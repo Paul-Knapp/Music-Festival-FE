@@ -1,0 +1,46 @@
+
+
+* {
+    font-family: 'Courier New', monospace;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+nav {
+    background-color: black; 
+    color: lime; 
+    padding: 10px;
+    border: 1px solid #00FF00;
+}
+
+ul {
+    list-style: none;
+    display: flex;
+    justify-content: space-around; 
+}
+
+li {
+    display: inline-block;
+}
+
+a {
+    color: lime;
+    text-decoration: none; 
+    font-size: 16px; 
+    padding: 5px 10px; 
+    border: 1px solid transparent; 
+    transition: background-color 0.3s, border-color 0.3s; 
+}
+
+a:hover {
+    background-color: #00FF00; 
+    color: black; 
+    border: 1px solid #00FF00; 
+}
+
+a.active {
+    background-color: #00FF00; 
+    color: black; 
+    border: 1px solid #00FF00; 
+}

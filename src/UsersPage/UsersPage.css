@@ -1,0 +1,65 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Courier New', monospace; /* Use monospaced font */
+}
+
+body {
+    background-color: black; /* Black background, typical of old-school terminals */
+    color: lime; /* Green text */
+    font-size: 16px; /* Consistent size for legibility */
+}
+
+/* Container for the users page */
+.homepage {
+    padding: 20px;
+}
+
+/* Title styling for the "Users" header */
+.title {
+    font-size: 24px;
+    font-weight: bold;
+    color: lime; /* Bright green title text */
+    margin-bottom: 20px; /* Space below the title */
+    border-bottom: 1px solid lime; /* A green line under the title */
+}
+
+/* List container styling for the users */
+.users-list {
+    list-style: none;
+    padding-left: 0;
+    margin-top: 10px;
+}
+
+/* Styling for each individual user item */
+.schedule-item {
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid lime; /* Lime green border around each user */
+    background-color: black; /* Black background for each user */
+    color: lime; /* Lime green text inside each item */
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* Hover effect for each user item */
+.schedule-item:hover {
+    background-color: lime; /* Green background on hover */
+    color: black; /* Black text on hover */
+}
+
+/* Error message */
+.error-message {
+    color: red; /* Red for error messages */
+    font-weight: bold;
+    font-size: 18px;
+    margin-top: 20px;
+}
+
+/* Loading message */
+.loading-message {
+    color: yellow; /* Yellow for the loading message */
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 20px;
+}
