@@ -1,0 +1,99 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Courier New', monospace;
+}
+
+body {
+    background-color: black;
+    color: lime; 
+    font-size: 16px;
+}
+
+.scheduledetails {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.scheduledetails h2 {
+    font-size: 28px;
+    font-weight: bold;
+    color: lime;
+    margin-bottom: 20px;
+    border-bottom: 1px solid lime;
+}
+
+.scheduledetails h3 {
+    font-size: 22px;
+    font-weight: bold;
+    margin-top: 20px;
+    color: lime;
+}
+
+.scheduledetails ul {
+    list-style-type: none;
+    padding-left: 0;
+    margin-top: 10px;
+}
+
+.scheduledetails li {
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid lime;
+    background-color: black;
+    color: lime;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.scheduledetails li:hover {
+    background-color: lime;
+    color: black;
+}
+
+@media (max-width: 1200px) {
+    .scheduledetails {
+        max-width: 100%;
+        padding: 15px;
+    }
+    .scheduledetails h2 {
+        font-size: 24px;
+    }
+    .scheduledetails h3 {
+        font-size: 20px;
+    }
+    .scheduledetails li {
+        padding: 8px;
+    }
+}
+
+@media (max-width: 768px) {
+    .scheduledetails {
+        padding: 10px;
+    }
+    .scheduledetails h2 {
+        font-size: 20px;
+    }
+    .scheduledetails h3 {
+        font-size: 18px;
+    }
+    .scheduledetails li {
+        padding: 6px;
+    }
+}
+
+@media (max-width: 480px) {
+    .scheduledetails {
+        padding: 5px;
+    }
+    .scheduledetails h2 {
+        font-size: 18px;
+    }
+    .scheduledetails h3 {
+        font-size: 16px;
+    }
+    .scheduledetails li {
+        padding: 4px;
+    }
+}
