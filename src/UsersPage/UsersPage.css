@@ -1,0 +1,39 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Courier New', monospace; 
+}
+
+body {
+    background-color: black; 
+    color: lime;
+    font-size: 16px;
+
+.homepage {
+    padding: 20px;
+}
+
+.title {
+    font-size: 24px;
+    font-weight: bold;
+    color: lime; 
+    margin-bottom: 20px; 
+    border-bottom: 1px solid lime; 
+}
+
+.users-list {
+    list-style: none;
+    padding-left: 0;
+    margin-top: 10px;
+}
+
+.schedule-item {
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid lime;
+    background-color: black; 
+    color: lime;
+    transition: background-color 0.3s, color 0.3s;
+}
+}
